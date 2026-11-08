@@ -11,12 +11,13 @@ int main(){
     int original_channel;  // I am making this varible to store the original number of channels of the image
     int required_channel = 3; // I am making this varibale to store the number of channel which I will be using in this project
 
-    char image_name[] = "image.jpg"; // I am making this array varible to store the name of the image
+    char image_name[] = "imagee.jpg"; // I am making this array varible to store the name of the image
     
     unsigned char *image = stbi_load(image_name, &width, &height, &original_channel, required_channel); // I am storing all the info provided by the function stbi_load in image pointer
 
-    if(image == NULL){
-        printf("Couldnt load image.\n");
+    // The below check is to check if the image is properly loaded or not
+    if(image == NULL){ // when the image is not loaded , the function stbi_load return NULL
+        printf("Couldnt load image. %s\n",stbi_failure_reason());
         return 1;
     }else{
         printf("Loaded Image info successfully.\n");
